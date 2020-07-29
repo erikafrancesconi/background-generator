@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'Raleway', sans-serif;
   font-size: 1.2rem;
@@ -48,6 +52,10 @@ input[type=button] {
   font-size: 0.9rem;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+footer {
+  display: none;
 }
 
 .picker p {
