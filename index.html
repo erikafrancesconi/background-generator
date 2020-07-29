@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>CSS Gradient Generator</h1>
+    <p>Yes, another one.</p>
+  </header>
+  <main>
+    <div class="picker">
+      <h2>Choose Your Colors:</h2>
+      <p>
+        <input type="color" name="" id="stc" value="#8500ff">
+        <input type="color" name="" id="endc" value="#ff008d">
+      </p>
+      <p class="wmt">
+        <input type="radio" name="direction" id="direction1" value="to right" checked>
+        <label for="direction1">Horizontal</label>
+        <input type="radio" name="direction" id="direction2" value="to bottom">
+        <label for="direction2">Vertical</label>
+      </p>
+      <p class="wmt">
+        <input type="button" value="Reset" id="reset">
+      </p>
+    </div>
+    <div>
+      <h2>Here's your code:</h2>
+      <code>linear-gradient(<span id="dir">to right</span>,
+        <span id ="startcolor">#8500ff</span>,
+        <span id="endcolor">#ff008d</span>);
+      </code>
+      <p>Just copy and paste it into your CSS.</p>
+    </div>
+    </main>
+
+    <script src="js/script.js" type="text/javascript"></script>
+  </body>
+  </html>
