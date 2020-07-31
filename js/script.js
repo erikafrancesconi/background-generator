@@ -1,66 +1,69 @@
-var body = document.querySelector('body');
+const body = document.querySelector('body');
+const resetBtn = document.querySelector('#reset');
 
-var startColorElement = document.getElementById('startcolor');
-var endColorElement = document.getElementById('endcolor');
-var startColor = startColorElement.textContent;
-var endColor = endColorElement.textContent;
-var originalStartColor = startColor;
-var originalEndColor = endColor;
+// Colors
+const startColorElement = document.getElementById('startcolor');
+const endColorElement = document.getElementById('endcolor');
+let startColor = startColorElement.textContent;
+let endColor = endColorElement.textContent;
+const originalStartColor = startColor;
+const originalEndColor = endColor;
+const colora = document.getElementById('stc');
+const colorb = document.getElementById('endc');
 
-var direction1 = document.getElementById('direction1');
-var direction2 = document.getElementById('direction2');
-var direction = direction1.value;
-var originalDirection = direction;
-var directionElement = document.getElementById('dir');
+// Direction
+const direction1 = document.getElementById('direction1');
+const direction2 = document.getElementById('direction2');
+let direction = direction1.value;
+const originalDirection = direction;
+const directionElement = document.getElementById('dir');
 
-function redraw() {
-  var style = 'linear-gradient(' + direction + ', ' + startColor + ' , ' + endColor + ')';
-  body.style.background = style;
+// Functions
+const setStartColor = (color=originalStartColor) => {
+  startColor = color;
+  startColorElement.textContent = color;
 }
 
-function setColor(which, color) {
-  if (which === 'start') {
-    startColor = color;
-    startColorElement.textContent = color;
-  } else if (which === 'end') {
-    endColor = color;
-    endColorElement.textContent = color;
-  }
+const setEndColor = (color=originalEndColor) => {
+  endColor = color;
+  endColorElement.textContent = color;
 }
 
-var colora = document.getElementById('stc');
-var colorb = document.getElementById('endc');
-colora.addEventListener('input', function() {
-  setColor('start', this.value);
-  redraw();
-});
-colorb.addEventListener('input', function() {
-  setColor('end', this.value);
-  redraw();
-});
-
-var resetBtn = document.querySelector('#reset');
-resetBtn.addEventListener('click', function() {
-  setColor('start', originalStartColor);
-  colora.value = originalStartColor;
-  setColor('end', originalEndColor);
-  colorb.value = originalEndColor;
-  setDirection(originalDirection);
-  direction1.checked = true;
-  redraw();
-});
-
-function setDirection(value) {
+const setDirection = (value=originalDirection) => {
   direction = value;
   directionElement.textContent = value;
 }
 
-direction1.addEventListener('input', function() {
-  setDirection(this.value);
+const redraw = () => {
+  body.style.background = `linear-gradient(${direction}, ${startColor}, ${endColor})`;
+}
+
+// Events
+colora.addEventListener('input', () => {
+  setStartColor(colora.value);
   redraw();
 });
-direction2.addEventListener('input', function() {
-  setDirection(this.value);
+colorb.addEventListener('input', () => {
+  setEndColor(colorb.value);
+  redraw();
+});
+
+resetBtn.addEventListener('click', () => {
+  setStartColor();
+  colora.value = originalStartColor;
+  setEndColor();
+  colorb.value = originalEndColor;
+  setDirection();
+  direction1.checked = true;
+  redraw();
+});
+
+direction1.addEventListener('input', () => {
+  setDirection(direction1.value);
+  redraw();
+});
+direction2.addEventListener('input', () => {
+  setDirection(direction2.value);
   redraw();
 });
 
